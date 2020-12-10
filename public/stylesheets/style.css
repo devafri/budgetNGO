@@ -1,0 +1,33 @@
+body, button {
+  font: 14px "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: orange;
+}
+a:visited {
+  color: white;
+}
+
+footer {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100vw;
+
+}
+.about>h5, p {
+  padding-left: 10px;
+  color: orange;
+}
+
+td {
+  min-width: 15vh;
+}
+
+.containerTable {
+  overflow-x: auto;
+}
+
+.tfoot{
+  font-weight: bold;
+}

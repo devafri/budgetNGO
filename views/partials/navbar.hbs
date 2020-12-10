@@ -1,0 +1,28 @@
+  <nav>
+    <div class="nav-wrapper grey lighten-5
+">
+      <a href="/" class="brand-logo orange-text">Budget NGO</a>
+      {{#if user}}
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="btn-small blue-grey darken-2"href="#">About us</a></li>
+          <li><a class="btn-small blue-grey darken-2" href="/vehicles">Search</a></li>
+        {{!-- <li><a class="waves-effect waves-light btn-small blue-grey darken-2" href="/register">Register</a></li> --}}
+          <li><a class="btn-small blue-grey darken-2" href="/login">Logout</a></li>
+        </ul>
+      {{else}}
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="btn-small blue-grey darken-2"href="#">Budgets</a></li>
+        <li><a class="btn-small blue-grey darken-2" href="/employees">Staff List</a></li>
+        <li><a class="waves-effect waves-light btn-small blue-grey darken-2" href="/addEmployee">Add employee</a></li>
+        <li><a class="btn-small blue-grey darken-2" href="/login">Login</a></li>
+      </ul>
+      {{/if}}
+    </div>
+  </nav>
+
+
+  <ul class="dropdown-content">
+    <li><a href="/addEmployee">Add employee</a></li>
+    <li><a href="/updateEmployee">Update employee</a></li>
+    <li><a href="/listEmployees">Staff list</a></li>
+</ul>

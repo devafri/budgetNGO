@@ -1,0 +1,54 @@
+<section>
+    <div class = "container">
+        <h1>Add employee</h1>
+    <form action="/addEmployee_" method="POST">
+        <div class="row">
+             <div class="input-field col s5">
+                 <input placeholder="Hi, my name is..." name="name" id="name" type="text" class="validate" >
+                  <label for="name">Name</label>
+            </div>
+                         <div class="input-field col s5">
+                 <input placeholder="E0001234" name="employeeID" id="employeeID" type="text" class="validate">
+                  <label for="employeeID">Employee ID</label>
+            </div>
+        </div>
+                <div class="row">
+                                 <div class="input-field col s1">
+                 <input placeholder="TA-Navajo" name="team" id="team" type="text" class="validate">
+                  <label for="team">Team</label>
+            </div>
+             <div class="input-field col s3">
+                 <input placeholder="PIH associate" name="jobTitle" id="jobTitle" type="text" class="validate">
+                  <label for="jobTitle">Job Title</label>
+            </div>
+             <div class="input-field col s2">
+                 <input placeholder="" id="salary" type="number" class="validate" name="salary">
+                  <label for="salary">Salary</label>
+            </div>
+                         <div class="input-field col s1">
+                 <input placeholder="xx%" id="fringeRate" name="fringeRate" type="number" class="validate">
+                  <label for="fringeRate">Fringe Rate</label>
+            </div>
+             <div class="input-field col s2">
+                 <input placeholder="startDate" name="startDate" id="startDate" type="date" class="validate">
+                  <label for="startDate">Start Date</label>
+            </div>
+    
+            <div class="input-field col 4">
+            <select class="browser-default" name="payPeriod">
+                <option value="" disabled selected>Pay unit</option>
+                <option value="Annual">Annual</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Hourly">Hourly</option>
+            </select>
+            {{!-- <label>Pay Unit</label> --}}
+        </div>
+        </div>
+        <div class="row">
+            <button class="btn green" type="submit" value="Submit">Add employee</button>
+        </div>
+        
+    </form>
+</section>
+    </div>
+    

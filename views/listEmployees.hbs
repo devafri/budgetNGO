@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Burn rate: </h2>
+    <h2>{{title}}</h2>
+    
+    <section class="containerTable">
+    <table class="responsive-table"id="employeeList">
+        <thead>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Annual Salary</th>
+            <th>Fringe</th>
+            <th>Total Comp</th>
+            <th>Start Date</th>
+            {{!-- Add for loop for months --}}
+            {{!-- <th>Month 1</th> --}}
+            {{!-- End for loop for months --}}
+        </thead>
+        <tbody>
+            {{#each employees}}
+            <tr>
+                <td>{{[jobTitle]}}</td>
+                <td>{{[team]}}</td>
+                <td class="salary">{{addCommas [salary]}}</td>
+                {{!-- <td>{{[fringeRate]}}</td> --}}
+                <td>{{divide [fringeRate] 100}}</td>
+                <td class="totalComp">{{addCommas (round (multiply (add (divide [fringeRate] 100) 1) [salary]))}}</td>
+                <td>{{formatDate [startDate] }}</td>
+                {{!-- <td>{{[startDate]}}</td> --}}
+                {{!-- <td class="totalComp">{{addCommas (round (divide (multiply (add (divide [fringeRate] 100) 1) [salary]) 12))}}</td> --}}
+            </tr>
+            {{/each}}
+            <tr class="tfoot">
+                    <td><b>TOTAL</b></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>####</td>
+                </tr>
+        </tbody>
+    </table>
+    </section>
+    <button class="btn small-btn" onclick="calculateCol(1)" id="calculate">Calculate</button>
+    <button class="btn btn-small red waves-effect" onclick="addColumn('employeeList')" id="#btnAddCol">Add Column</button>
+    {{> pagination}}
+</div>
+

@@ -1,0 +1,21 @@
+
+<div class="container center-align">
+    <ul class = "pagination">
+    
+    {{#gt page 1}}
+    <li class="pagination__prev">
+        <a href="/vehicles/page/{{minus page 1}}"><i class="materials-icons">chevron_left</i></a>
+    </li>
+    {{/gt}}
+    
+    <li class="pagination__text">Page {{page}} of {{pages}} total results
+    </li>
+    
+    {{#gt pages page}}
+    <li class="pagination__next">
+        <a href="/vehicles/page/{{add page 1}}"><i class="materials-icons">chevron_right</i></a>
+    </li>
+    {{/gt}}
+    
+</ul>
+</div>
