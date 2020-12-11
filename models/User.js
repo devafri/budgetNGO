@@ -16,18 +16,18 @@ const UserSchema = new Schema({
     validate: [validator.isEmail, 'Invalid Email Address'],
     required: 'Please Supply an email address'
   },
-  name:{
+  password:{
     type: String,
-    required: 'Please supply a name',
+    required: 'Please supply a password',
     trim: true
   }
 });
 
-UserSchema.virtual('gravatar').get(function(){
-  const hash = md5(this.email);
-  return `https://gravatar.com/avatar/${hash}?s=200`
-  // return `https://image.shutterstock.com/image-vector/car-logo-icon-emblem-design-260nw-473088037.jpg`;
-});
+// UserSchema.virtual('gravatar').get(function(){
+//   const hash = md5(this.email);
+//   return `https://gravatar.com/avatar/${hash}?s=200`
+//   // return `https://image.shutterstock.com/image-vector/car-logo-icon-emblem-design-260nw-473088037.jpg`;
+// });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 UserSchema.plugin(mongodbErrorHandler);

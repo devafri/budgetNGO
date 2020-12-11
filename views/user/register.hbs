@@ -1,0 +1,15 @@
+<div class = "row">
+    <div class = "col md-4 offset-4">
+        <h1>Register</h1>
+        <form action="/user/register" form="POST">
+             <label for="email">E-mail</label>
+             <input type="text" name="email" id="email"></inpu>
+             <label for="password">Password</label>
+             <input type="password" name="password" id="password"></input>
+             <label for="password">Confirm password</label>
+             <input type="password" name="confirm-password" id="confirm-password"></input>
+        {{!-- <input type = "hidden" name="_csrf" value="{{ csrfToken }}" --}}
+        <button type="submit" class="btn btn-small">Register</button>
+        </form>
+    </div>
+</div>

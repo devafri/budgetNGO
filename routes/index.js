@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const employeeController = require('../controllers/employeeController');
+const authController = require('../controllers/authController');
 const budgetController = require('../controllers/budgetController');
+const userController = require('../controllers/userController');
 const Employee = require('../models/Employee');
+
+const csrf = require('csurf');
+const csrfProtection = csrf();
+router.use(csrfProtection);
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -44,5 +52,10 @@ router.get('/createBudget', budgetController.createBudget);
 // router.post('/createBudget', budgetController.createBudget);
 router.get('/budgets', budgetController.getBudgetList);
 // router.get('/reviewBudget', budgetController.reviewBudget);
+
+// USER ROUTES
+router.get('/user/register', userController.accountRegister);
+router.post('/user/register', userController.validateRegister, userController.accountRegister,
+authController.login);
 
 module.exports = router;

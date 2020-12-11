@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 const hbs = require('express-handlebars');
 const juice = require('juice');
 const htmlToText = require('html-to-text');
@@ -14,10 +14,3 @@ const transport = nodemailer.createTransport({
     }
 });
 
-transport.sendMail({
-    from: 'Felix <info@devafri.com>',
-    to: 'felix@devafri.com',
-    subject: 'this is a test',
-    html: '<h1>It works! <h1>',
-    test: 'it works'
-})
