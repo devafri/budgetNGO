@@ -17,6 +17,7 @@ const methodOverride = require('method-override');
 const moment = require('moment');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+const csrf = require('csurf');
 
 //Import env variables
 require('dotenv').config({ path: './variables.env' });
@@ -61,6 +62,7 @@ app.use(expressValidator());
 
 app.use(methodOverride());
 app.use(cookieParser());
+app.use(csrf({ cookie: true }));
 app.use(session({
   secret: 'process.env.SECRET',
   key: 'process.env.KEY',
@@ -69,6 +71,7 @@ app.use(session({
   cookie: { secure: true, maxAge: 60000 },
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -80,6 +83,7 @@ app.use((req, res, next) => {
   res.locals.flashes = req.flash();
   res.locals.user = req.user || null;
   res.locals.currentPath = req.path;
+  res.locals._csrf = req.csrfToken();
   next();
 });
 

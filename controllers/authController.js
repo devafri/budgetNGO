@@ -67,7 +67,7 @@ exports.isLoggedIn = (req, res, next) => {
   };
   
   exports.confirmedPasswords = (req, res, next) => {
-    if (req.body.password === req.body['password-confirm']) {
+    if (req.body.password === req.body['confirm-password']) {
       next(); // keepit going!
       return;
     }

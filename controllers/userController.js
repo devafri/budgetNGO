@@ -1,19 +1,25 @@
 const csrf = require('csurf');
 const csrfProtection = csrf();
 
-exports.account = (req, res) => {
-    res.render('account', {title: 'Edit Your Account'});
-};
 
-exports.accountRegister = (req, res) => {
-    res.render('user/register', {title: 'Edit Your Account', csrfToken: req.csrfToken});
-};
+exports.loginForm = (req, res) => {
+    res.render('user/login', { title: 'Login' });
+  };
+  
+  exports.registerForm = (req, res) => {
+    res.render('user/register', { title: 'Register', csrfToken: req.csrfToken });
+  };
 
-exports.accountRegisterSubmit = (req, res) => {
-    res.render('user/register', function(req, res, next){
-        res.redirect('/');
-    });
-};
+
+// exports.accountRegisterForm = (req, res) => {
+//     res.render('user/register', {title: 'Register', csrfToken: req.csrfToken});
+// };
+
+// exports.accountRegisterSubmit = (req, res) => {
+//     res.render('user/register', function(req, res, next){
+//         res.redirect('/');
+//     });
+// };
 
 
 exports.updateAccount = async (req, res) => {
@@ -43,8 +49,15 @@ exports.validateRegister = (req, res, next) => {
     const errors = req.validationErrors();
     if (errors) {
       req.flash('error', errors.map(err => err.msg));
-      res.render('register', { title: 'Register', body: req.body, flashes: req.flash() });
+      res.render('register', { title: 'Register', body: req.body, flashes: req.flash() , hasErrors: flashes.length > 0});
       return; // stop the fn from running
     }
     next(); // there were no errors!
+  };
+
+exports.register = async (req, res, next) => {
+    const user = new User({ email: req.body.email, name: req.body.name });
+    const register = promisify(User.register, User);
+    await register(user, req.body.password);
+    next(); // pass to authController.login
   };
